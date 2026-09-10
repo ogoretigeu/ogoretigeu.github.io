@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>积善网-汇聚善行力量与公益资讯平台</title>
+    <meta name="description" content="积善网致力于传播公益慈善文化，汇聚善行力量，提供公益项目资讯、志愿服务机会、爱心企业动态与感人善举故事，助力人人参与公益。" />
+    <meta name="keywords" content="积善网,公益,慈善,志愿服务,爱心捐赠,善行,公益项目,正能量,好人好事" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: #f6f7f1;
+            color: #3d3d3a;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .site-header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #e4e9d6;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #4a7c59, #8bc34a);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .site-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2c5e3d;
+            letter-spacing: 1px;
+        }
+        .site-name span {
+            color: #9ccc65;
+        }
+        .header-nav ul {
+            display: flex;
+            gap: 28px;
+        }
+        .header-nav ul li a {
+            font-size: 16px;
+            font-weight: 500;
+            color: #4a4a44;
+            padding: 8px 4px;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .header-nav ul li a:hover,
+        .header-nav ul li.active a {
+            color: #2c5e3d;
+            border-bottom-color: #6b9d6b;
+        }
+        .header-auth a {
+            font-size: 15px;
+            padding: 8px 18px;
+            border-radius: 30px;
+            background: #eef3e6;
+            color: #2c5e3d;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .header-auth a:hover {
+            background: #2c5e3d;
+            color: #fff;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #2c5e3d;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(100deg, #eef5e9 0%, #d9e8d1 100%);
+            padding: 60px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -80px;
+            top: -80px;
+            width: 300px;
+            height: 300px;
+            background: rgba(139, 195, 74, 0.15);
+            border-radius: 50%;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-text {
+            flex: 1 1 460px;
+        }
+        .hero-text h1 {
+            font-size: 44px;
+            font-weight: 800;
+            color: #1e4a2b;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+        .hero-text p {
+            font-size: 18px;
+            color: #3e5c44;
+            max-width: 560px;
+            margin-bottom: 25px;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.2s;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background: #2c5e3d;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(44, 94, 61, 0.2);
+        }
+        .btn-primary:hover {
+            background: #1f4a2c;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border-color: #2c5e3d;
+            color: #2c5e3d;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: #2c5e3d;
+            color: #fff;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 30px;
+        }
+        .stat-item .stat-num {
+            font-size: 28px;
+            font-weight: 800;
+            color: #2c5e3d;
+        }
+        .stat-item .stat-label {
+            font-size: 14px;
+            color: #58705e;
+        }
+        .hero-image {
+            flex: 0 1 300px;
+            text-align: center;
+        }
+        .hero-image-emoji {
+            font-size: 120px;
+            line-height: 1;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08));
+        }
+
+        /* Section 通用 */
+        .section {
+            padding: 55px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c5e3d;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #8bc34a;
+            border-radius: 4px;
+        }
+        .section-title p {
+            color: #6a6a60;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* 积善理念 */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .philosophy-card {
+            background: #fff;
+            padding: 36px 28px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            text-align: center;
+            transition: 0.3s;
+            border-top: 4px solid #8bc34a;
+        }
+        .philosophy-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+        }
+        .philosophy-icon {
+            font-size: 44px;
+            margin-bottom: 16px;
+        }
+        .philosophy-card h3 {
+            font-size: 20px;
+            color: #1e4a2b;
+            margin-bottom: 12px;
+        }
+        .philosophy-card p {
+            font-size: 15px;
+            color: #66665e;
+            line-height: 1.7;
+        }
+
+        /* 公益项目 */
+        .project-section {
+            background: #ffffff;
+        }
+        .project-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+        .tab-btn {
+            padding: 8px 22px;
+            border-radius: 30px;
+            background: #f0f4eb;
+            border: 1px solid #dde5d4;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #3e5c44;
+        }
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: #2c5e3d;
+            color: #fff;
+            border-color: #2c5e3d;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .project-card {
+            background: #fafcf8;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            transition: 0.3s;
+            border: 1px solid #e9efe2;
+        }
+        .project-card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+        .project-cover {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #fff;
+        }
+        .cover-green {
+            background: linear-gradient(135deg, #558b2f, #8bc34a);
+        }
+        .cover-teal {
+            background: linear-gradient(135deg, #2e7d5b, #43a047);
+        }
+        .cover-olive {
+            background: linear-gradient(135deg, #9e9d24, #7cb342);
+        }
+        .cover-forest {
+            background: linear-gradient(135deg, #1b5e20, #4caf50);
+        }
+        .project-body {
+            padding: 20px 22px 24px;
+        }
+        .project-body h3 {
+            font-size: 18px;
+            color: #1e4a2b;
+            margin-bottom: 8px;
+        }
+        .project-body p {
+            font-size: 14px;
+            color: #6a6a60;
+            margin-bottom: 14px;
+        }
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #8a8a7e;
+            border-top: 1px dashed #d5dfc8;
+            padding-top: 12px;
+        }
+        .project-link {
+            color: #2c5e3d;
+            font-weight: 600;
+        }
+
+        /* 善行资讯 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 24px;
+        }
+        .news-main {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .news-main h3 {
+            font-size: 22px;
+            color: #1e4a2b;
+            margin-bottom: 8px;
+        }
+        .news-main .date-badge {
+            display: inline-block;
+            background: #eef3e6;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #2c5e3d;
+            margin-bottom: 12px;
+        }
+        .news-main p {
+            font-size: 15px;
+            color: #4f4f46;
+        }
+        .news-list-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 18px 22px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            margin-bottom: 16px;
+            transition: 0.2s;
+            border-left: 4px solid #8bc34a;
+        }
+        .news-list-item h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: #2f4d34;
+        }
+        .news-list-item .news-date {
+            font-size: 12px;
+            color: #99998e;
+        }
+        .news-list-item:hover {
+            background: #f9fcf5;
+            transform: translateX(4px);
+        }
+
+        /* 爱心志愿者 */
+        .volunteer-section {
+            background: #e8f0e2;
+        }
+        .volunteer-inner {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .volunteer-text {
+            flex: 1 1 400px;
+        }
+        .volunteer-text h2 {
+            font-size: 32px;
+            color: #1e4a2b;
+            margin-bottom: 12px;
+        }
+        .volunteer-text p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #3b5a41;
+        }
+        .volunteer-benefits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .benefit-tag {
+            background: #fff;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 14px;
+            border: 1px solid #c4d6b6;
+            color: #2c5e3d;
+        }
+        .volunteer-image {
+            flex: 0 0 260px;
+            text-align: center;
+        }
+        .volunteer-image .hero-image-emoji {
+            font-size: 100px;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            border-left: 5px solid #a3c293;
+        }
+        .faq-item h3 {
+            font-size: 18px;
+            color: #2c5e3d;
+            margin-bottom: 8px;
+        }
+        .faq-item p {
+            font-size: 15px;
+            color: #5a5a52;
+        }
+
+        /* 行动号召 */
+        .cta-banner {
+            background: linear-gradient(135deg, #2c5e3d, #558b2f);
+            padding: 50px 0;
+            text-align: center;
+            color: #fff;
+        }
+        .cta-banner h2 {
+            font-size: 30px;
+            margin-bottom: 14px;
+        }
+        .cta-banner p {
+            font-size: 17px;
+            opacity: 0.9;
+            margin-bottom: 26px;
+        }
+        .btn-light {
+            background: #fff;
+            color: #2c5e3d;
+        }
+        .btn-light:hover {
+            background: #e2ecda;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #1f2a1c;
+            color: #b8c4ae;
+            padding: 40px 0 20px;
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 24px;
+        }
+        .footer-about {
+            max-width: 300px;
+        }
+        .footer-about h3 {
+            color: #e2ecda;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        .footer-links h4 {
+            color: #d3dfc9;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        .footer-links ul li {
+            margin-bottom: 8px;
+        }
+        .footer-links ul li a {
+            font-size: 14px;
+            color: #a8b89e;
+            transition: 0.2s;
+        }
+        .footer-links ul li a:hover {
+            color: #fff;
+        }
+        .footer-bottom {
+            border-top: 1px solid #33402d;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #8b9c81;
+        }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .philosophy-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .news-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .news-main {
+                grid-column: span 2;
+            }
+        }
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+                width: 100%;
+                order: 3;
+                padding-top: 15px;
+            }
+            .header-nav.open {
+                display: block;
+            }
+            .header-nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            .header-nav ul li {
+                border-bottom: 1px solid #eef3e6;
+            }
+            .header-nav ul li a {
+                display: block;
+                padding: 14px 0;
+                border: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-text h1 {
+                font-size: 30px;
+            }
+            .hero-stats {
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+            .philosophy-grid,
+            .project-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .news-main {
+                grid-column: auto;
+            }
+            .volunteer-inner {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .volunteer-benefits {
+                justify-content: center;
+            }
+            .section-title h2 {
+                font-size: 26px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            .hero-actions {
+                flex-direction: column;
+            }
+            .btn {
+                text-align: center;
+            }
+            .faq-item {
+                padding: 18px;
+            }
+        }
+    </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <div class="logo-icon">善</div>
+            <div class="site-name">积善<span>网</span></div>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="打开菜单">☰</button>
+        <nav class="header-nav" id="siteNav">
+            <ul>
+                <li class="active"><a href="#">首页</a></li>
+                <li><a href="#">公益项目</a></li>
+                <li><a href="#">善行资讯</a></li>
+                <li><a href="#">志愿者</a></li>
+                <li><a href="#">爱心企业</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </nav>
+        <div class="header-auth">
+            <a href="#">参与公益</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero 首屏 -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>积小善，成大爱<br>让每一份善意都有回响</h1>
+                <p>积善网是一个连接爱心人士与公益项目的平台，我们相信微小的善举也能汇聚成改变世界的力量。在这里，发现善行、参与公益、传递温暖。</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-primary">成为志愿者</a>
+                    <a href="#" class="btn btn-outline">了解公益项目</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-num">500+</div>
+                        <div class="stat-label">公益项目</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">2w+</div>
+                        <div class="stat-label">注册志愿者</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">120+</div>
+                        <div class="stat-label">爱心企业</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-emoji">🤝</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 积善理念 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>我们的积善理念</h2>
+                <p>善行无大小，点滴皆温暖</p>
+            </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">🌱</div>
+                    <h3>日行一善</h3>
+                    <p>从身边小事做起，每一次举手之劳都是善的种子。积善网鼓励每个人每天做一件有益于他人或社会的小事，让善意成为生活习惯。</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">🤲</div>
+                    <h3>透明公益</h3>
+                    <p>我们坚持公开透明的公益原则，项目进展、善款流向均向公众展示，让每一份爱心都能被看见，建立信任的桥梁。</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">🌍</div>
+                    <h3>人人参与</h3>
+                    <p>公益不是少数人的专利，而是每个人都可以参与的事业。无论时间、技能还是资源，都能为世界带来正向改变。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 公益项目 -->
+    <section class="section project-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>热门公益项目</h2>
+                <p>选择你关心的领域，贡献你的力量</p>
+            </div>
+            <div class="project-tabs">
+                <button class="tab-btn active">全部</button>
+                <button class="tab-btn">教育助学</button>
+                <button class="tab-btn">环境保护</button>
+                <button class="tab-btn">扶贫助老</button>
+                <button class="tab-btn">医疗救助</button>
+            </div>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="project-cover cover-green">📚</div>
+                    <div class="project-body">
+                        <h3>乡村图书角计划</h3>
+                        <p>为偏远山区小学建立班级图书角，让优质童书触手可及，点亮孩子们的阅读梦。</p>
+                        <div class="project-meta">
+                            <span>已筹 78%</span>
+                            <a href="#" class="project-link">支持 →</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-cover cover-teal">🌳</div>
+                    <div class="project-body">
+                        <h3>守护母亲河行动</h3>
+                        <p>组织志愿者开展河道清洁、水质监测与环保宣传，共同守护我们的碧水清流。</p>
+                        <div class="project-meta">
+                            <span>招募中</span>
+                            <a href="#" class="project-link">参与 →</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-cover cover-olive">🍱</div>
+                    <div class="project-body">
+                        <h3>爱心午餐进社区</h3>
+                        <p>为社区孤寡老人提供营养午餐配送服务，并定期上门探访陪伴，传递邻里温情。</p>
+                        <div class="project-meta">
+                            <span>已筹 56%</span>
+                            <a href="#" class="project-link">支持 →</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-cover cover-forest">🏥</div>
+                    <div class="project-body">
+                        <h3>大病儿童救助金</h3>
+                        <p>为困境家庭的重病儿童提供医疗救助金支持，帮助他们渡过难关，重获健康童年。</p>
+                        <div class="project-meta">
+                            <span>已筹 92%</span>
+                            <a href="#" class="project-link">支持 →</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-cover cover-green">♻️</div>
+                    <div class="project-body">
+                        <h3>旧物新生计划</h3>
+                        <p>回收城市闲置物品，经过分拣消毒后捐赠给有需要的人群，让资源循环利用。</p>
+                        <div class="project-meta">
+                            <span>进行中</span>
+                            <a href="#" class="project-link">捐赠 →</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-cover cover-teal">🎨</div>
+                    <div class="project-body">
+                        <h3>特殊儿童艺术课堂</h3>
+                        <p>为自闭症、唐氏综合征等特殊儿童提供免费艺术疗愈课程，用色彩打开心扉。</p>
+                        <div class="project-meta">
+                            <span>招募志愿者</span>
+                            <a href="#" class="project-link">报名 →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 善行资讯 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>善行资讯</h2>
+                <p>关注公益动态，见证善的力量</p>
+            </div>
+            <div class="news-grid">
+                <article class="news-main">
+                    <span class="date-badge">头条 · 今日</span>
+                    <h3>全国志愿服务项目大赛落幕，多个创新项目获关注</h3>
+                    <p>近日，全国志愿服务项目大赛在多地同步开展。本次大赛涌现出许多聚焦社区治理、为老服务、生态环保的创新项目，展现了新时代志愿服务的活力与温度。来自各地的志愿者团队分享了他们的实践经验与感人故事。</p>
+                </article>
+                <div>
+                    <article class="news-list-item">
+                        <h4>“积善之家”社区公益节启动，千场活动惠及居民</h4>
+                        <span class="news-date">2025-03-15</span>
+                    </article>
+                    <article class="news-list-item">
+                        <h4>爱心企业联盟捐赠百万元物资支援乡村教育</h4>
+                        <span class="news-date">2025-03-12</span>
+                    </article>
+                    <article class="news-list-item">
+                        <h4>大学生志愿者开展“智慧助老”手机培训课堂</h4>
+                        <span class="news-date">2025-03-10</span>
+                    </article>
+                </div>
+                <div>
+                    <article class="news-list-item">
+                        <h4>环保组织发布年度河流保护报告，水质持续改善</h4>
+                        <span class="news-date">2025-03-08</span>
+                    </article>
+                    <article class="news-list-item">
+                        <h4>“爱心厨房”公益项目为环卫工人提供免费早餐</h4>
+                        <span class="news-date">2025-03-05</span>
+                    </article>
+                    <article class="news-list-item">
+                        <h4>积善网平台开通线上公益课堂，普及急救知识</h4>
+                        <span class="news-date">2025-03-02</span>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 志愿者招募 -->
+    <section class="section volunteer-section">
+        <div class="container volunteer-inner">
+            <div class="volunteer-text">
+                <h2>加入志愿者队伍</h2>
+                <p>一个人的力量或许有限，但一群人的善意可以燎原。积善网长期招募热心公益的志愿者，无论你的职业、年龄、技能如何，都能找到适合的参与方式。</p>
+                <div class="volunteer-benefits">
+                    <span class="benefit-tag">志愿服务时长记录</span>
+                    <span class="benefit-tag">专业技能培训</span>
+                    <span class="benefit-tag">结识同频伙伴</span>
+                    <span class="benefit-tag">公益实践证明</span>
+                </div>
+                <a href="#" class="btn btn-primary">立即报名志愿者</a>
+            </div>
+            <div class="volunteer-image">
+                <div class="hero-image-emoji">🧑‍🤝‍🧑</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 FAQ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于公益的常见疑问</h2>
+                <p>我们整理了一些大家关心的问题</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>如何确保我的捐款被合理使用？</h3>
+                    <p>积善网要求所有入驻公益项目定期提交进展报告与财务明细，平台会进行审核与公示。您可以在项目页面查看实时进度与资金使用情况，同时我们也鼓励捐赠人与项目方直接沟通。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>没有太多时间，可以怎样参与公益？</h3>
+                    <p>您可以参与线上公益倡导活动、进行小额月捐，或者选择“碎片化志愿”服务，例如线上文档整理、远程设计、翻译等，同样能为公益组织提供有力支持。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>如何发起一个公益项目？</h3>
+                    <p>如果您或您的团队有成熟的公益想法，可以通过“发起项目”入口提交申请。我们会对项目进行审核评估，包括可行性、预算合理性以及团队执行能力，通过后即可上线筹款或招募志愿者。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>企业如何与积善网合作？</h3>
+                    <p>企业可以通过资金捐赠、物资支持、员工志愿服务、技术赋能等多种方式参与合作。我们诚挚欢迎有社会责任感的伙伴共同推动公益事业发展。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>你的每一次善举，都在让世界更美好</h2>
+            <p>不论大小，行动起来，就是最好的开始。</p>
+            <a href="#" class="btn btn-light">立即行动</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-about">
+                <h3>积善网</h3>
+                <p>以“积善成德”为核心理念，致力于打造一个透明、温暖、高效的公益服务平台，连接善意与需求，让公益融入日常生活。</p>
+            </div>
+            <div class="footer-links">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">公益项目</a></li>
+                    <li><a href="#">善行资讯</a></li>
+                    <li><a href="#">志愿者中心</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>合作支持</h4>
+                <ul>
+                    <li><a href="#">爱心企业</a></li>
+                    <li><a href="#">公益组织入驻</a></li>
+                    <li><a href="#">媒体合作</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>法律条款</h4>
+                <ul>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">服务协议</a></li>
+                    <li><a href="#">版权声明</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 积善网 · 让善意流动起来 · 本站为公益展示平台</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 移动端导航切换
+    document.getElementById('menuToggle').addEventListener('click', function () {
+        var nav = document.getElementById('siteNav');
+        nav.classList.toggle('open');
+    });
+
+    // 简单的标签切换效果（仅UI演示）
+    var tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            tabBtns.forEach(function (item) {
+                item.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+  </html>
