@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无尽长廊-探索无限延伸的建筑美学与空间设计灵感</title>
+    <meta name="description" content="无尽长廊是一个专注于长廊建筑、景观设计与空间美学的灵感平台。我们探索世界各地独具特色的长廊案例，从古典园林到现代艺术装置，分享设计理念、历史故事与实用游览指南。">
+    <meta name="keywords" content="无尽长廊,长廊设计,建筑美学,景观连廊,游廊文化,空间设计,艺术长廊,步行廊道">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: #f7f6f2;
+            color: #2d2a26;
+            line-height: 1.7;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Header & Nav ===== */
+        .site-header {
+            background: #ffffff;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo a {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #3e3a36;
+        }
+        .logo span {
+            color: #a8814f;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+        .main-nav a {
+            font-size: 1rem;
+            color: #4a4642;
+            transition: color 0.2s;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+        }
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: #8b6b42;
+            border-bottom-color: #b08d5f;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #3e3a36;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            background: linear-gradient(135deg, #e9e4d8 0%, #d6cdbd 50%, #c7b9a5 100%);
+            padding: 72px 0 80px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #2a2621;
+            margin-bottom: 16px;
+        }
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #4f4a44;
+            max-width: 720px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .hero .cta-btn {
+            display: inline-block;
+            background: #3e3a36;
+            color: #f5f1e8;
+            padding: 14px 42px;
+            border-radius: 40px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.2s;
+            border: 1px solid #3e3a36;
+        }
+        .hero .cta-btn:hover {
+            background: #5b4f3f;
+            transform: translateY(-2px);
+        }
+
+        /* ===== Section Titles ===== */
+        .section {
+            padding: 72px 0;
+        }
+        .section-alt {
+            background: #efebe3;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #b08d5f;
+            margin: 16px auto 0;
+        }
+
+        /* ===== Feature Cards ===== */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+        .feature-card {
+            background: #fff;
+            padding: 32px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e8e1d6;
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+        }
+        .feature-card .icon {
+            font-size: 2.6rem;
+            margin-bottom: 16px;
+        }
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #3a3632;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #6c6660;
+        }
+
+        /* ===== Showcase List ===== */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .showcase-item {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+            transition: transform 0.25s ease;
+            border: 1px solid #e4ddd2;
+        }
+        .showcase-item:hover {
+            transform: translateY(-5px);
+        }
+        .showcase-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-color: #d9d0c4;
+            position: relative;
+        }
+        .showcase-tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(58, 54, 48, 0.82);
+            color: #f5f1e8;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+        .showcase-content {
+            padding: 20px 20px 24px;
+        }
+        .showcase-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #2f2b27;
+        }
+        .showcase-content p {
+            font-size: 0.95rem;
+            color: #6b655e;
+            margin-bottom: 12px;
+        }
+        .showcase-meta {
+            font-size: 0.85rem;
+            color: #a08d78;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ===== Articles ===== */
+        .article-list {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .article-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 20px;
+            border-left: 4px solid #b08d5f;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: box-shadow 0.2s;
+        }
+        .article-item:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+        .article-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #2f2b27;
+        }
+        .article-item p {
+            color: #5f5a54;
+            font-size: 0.98rem;
+        }
+        .article-item .date {
+            display: block;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #a08a74;
+        }
+
+        /* ===== Quotes ===== */
+        .quote-section {
+            background: #3e3a36;
+            color: #e8e1d6;
+            padding: 64px 0;
+            text-align: center;
+        }
+        .quote-section blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 24px;
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+        .quote-section cite {
+            font-style: normal;
+            color: #c0a888;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 14px;
+            padding: 22px 28px;
+            border: 1px solid #e6dfd4;
+        }
+        .faq-item summary {
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            color: #3a3632;
+            outline: none;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: "+";
+            font-size: 1.6rem;
+            color: #a8814f;
+            font-weight: 300;
+        }
+        .faq-item[open] summary::after {
+            content: "–";
+        }
+        .faq-item .answer {
+            margin-top: 14px;
+            color: #5d5750;
+            font-size: 0.98rem;
+            padding-top: 12px;
+            border-top: 1px dashed #ddd2c4;
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            background: #2c2925;
+            color: #aaa29a;
+            padding: 52px 0 32px;
+            font-size: 0.9rem;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-col h4 {
+            color: #d9d0c4;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul a {
+            color: #aaa29a;
+            transition: color 0.2s;
+        }
+        .footer-col ul a:hover {
+            color: #d9c8b0;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #45413c;
+            color: #7d776f;
+            font-size: 0.82rem;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .showcase-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .header-inner {
+                height: 64px;
+            }
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+                padding: 16px 24px;
+            }
+            .main-nav.open {
+                display: block;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+            .section {
+                padding: 50px 0;
+            }
+            .article-item {
+                padding: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero {
+                padding: 50px 0 60px;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero .cta-btn {
+                padding: 12px 30px;
+            }
+            .footer-inner {
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo">
+            <a href="#">无尽<span>长廊</span></a>
+        </div>
+        <button class="nav-toggle" aria-label="打开菜单">☰</button>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">经典长廊</a></li>
+                <li><a href="#">设计视角</a></li>
+                <li><a href="#">旅行足迹</a></li>
+                <li><a href="#">文化漫谈</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero 首屏 -->
+    <section class="hero">
+        <div class="container">
+            <h1>无尽长廊</h1>
+            <p class="subtitle">在光影交错之间，探寻建筑与自然共生的无限可能。每一道回廊，都是一段通向远方的叙事。</p>
+            <a href="#featured" class="cta-btn">开启漫步之旅</a>
+        </div>
+    </section>
+
+    <!-- 长廊类型卡片 -->
+    <section class="section" id="featured">
+        <div class="container">
+            <h2 class="section-title">长廊的形态与韵味</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🏞️</div>
+                    <h3>园林游廊</h3>
+                    <p>曲径通幽，步移景异。中国古典园林中的游廊将建筑与山水融为一体，是东方美学的极致表达。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🏛️</div>
+                    <h3>古典柱廊</h3>
+                    <p>从古希腊神庙到罗马广场，柱廊承载着西方古典建筑的秩序感与公共生活的记忆。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🌉</div>
+                    <h3>现代廊桥</h3>
+                    <p>当代设计中的步行廊道与廊桥，以极简结构和光影变化，重新定义城市公共空间。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎨</div>
+                    <h3>艺术长廊</h3>
+                    <p>博物馆与美术馆中的长廊，不仅是通行的路径，更是艺术叙事与观展体验的一部分。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精选长廊案例 -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">精选漫步目的地</h2>
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <div class="showcase-img" style="background-image: linear-gradient(135deg, #b5c6b0, #7f9a7a);">
+                        <span class="showcase-tag">东方园林</span>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>苏州拙政园水廊</h3>
+                        <p>依水而建，起伏有致。长廊与倒影交织，四季景致在窗棂间流转。</p>
+                        <div class="showcase-meta">
+                            <span>📍 江苏 · 苏州</span>
+                            <span>⏳ 建议游览 2-3h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <div class="showcase-img" style="background-image: linear-gradient(135deg, #cbb9a6, #a58a6f);">
+                        <span class="showcase-tag">历史遗迹</span>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>颐和园长廊</h3>
+                        <p>全长七百余米，梁枋彩绘逾万幅，是中国古典园林中最具代表性的长廊之一。</p>
+                        <div class="showcase-meta">
+                            <span>📍 北京</span>
+                            <span>⏳ 建议游览 1-2h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <div class="showcase-img" style="background-image: linear-gradient(135deg, #99a8b2, #6c7d8a);">
+                        <span class="showcase-tag">现代建筑</span>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>阿姆斯特丹市立博物馆中庭廊</h3>
+                        <p>通透的玻璃顶与白色钢构，营造出轻盈而纯粹的当代空间体验。</p>
+                        <div class="showcase-meta">
+                            <span>📍 荷兰 · 阿姆斯特丹</span>
+                            <span>⏳ 建议游览 1h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计文化文章 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">长廊文化漫谈</h2>
+            <div class="article-list">
+                <article class="article-item">
+                    <h3>中国园林长廊的“借景”智慧</h3>
+                    <p>长廊不仅是行走的通道，更是框景与引景的工具。通过廊的转折与门窗的虚实变化，园林将远山近水纳入一方天地。这种手法体现了古人“天人合一”的哲学理想。</p>
+                    <span class="date">✍️ 2025.04.02</span>
+                </article>
+                <article class="article-item">
+                    <h3>从柱廊到灰空间：西方长廊的公共性演变</h3>
+                    <p>古希腊的柱廊是公民集会与哲学辩论的场所，文艺复兴时期的拱廊则成为商业与社交的舞台。今天，现代建筑中的架空廊道延续了这种“灰空间”的公共属性。</p>
+                    <span class="date">✍️ 2025.03.18</span>
+                </article>
+                <article class="article-item">
+                    <h3>光影游戏：如何拍摄出长廊的纵深感</h3>
+                    <p>利用透视汇聚线、明暗对比与地面反射，可以强化长廊的空间纵深感。清晨或黄昏的低角度光线，往往能赋予廊柱与地面更丰富的纹理层次。</p>
+                    <span class="date">✍️ 2025.03.05</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 经典引言 -->
+    <section class="quote-section">
+        <div class="container">
+            <blockquote>“长廊是建筑中缓慢的节奏，它在匆忙的世界里划出一段可以停驻、沉思与相遇的时空。”</blockquote>
+            <cite>——《无尽长廊》编辑部</cite>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">关于长廊的常见疑问</h2>
+            <div class="faq-wrap">
+                <details class="faq-item">
+                    <summary>长廊与游廊、走廊有什么区别？</summary>
+                    <div class="answer">在建筑术语中，“走廊”多指建筑内部连接各个房间的通道；“游廊”则强调园林中供人漫步、观景的开放式廊道。而“长廊”通常指规模较大、具有一定长度与连续性的廊道，既可以是室内的，也可以是半室外或室外的。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>中国最著名的长廊有哪些？</summary>
+                    <div class="answer">最广为人知的当属北京颐和园的长廊，全长728米，是中国古典园林中最长的廊。此外，苏州拙政园的水廊、留园的曲廊，以及扬州个园的复道回廊，都是造园艺术中的经典范例。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>长廊在现代城市设计中有什么作用？</summary>
+                    <div class="answer">现代城市中的长廊常被用作连接不同功能区的步行系统，提供遮阳避雨的舒适路径。它还能创造丰富的空间层次，促进社区交往，并为城市增添可识别的景观特征。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>参观长廊类建筑时有哪些注意事项？</summary>
+                    <div class="answer">古典园林中的长廊多为木质结构，请勿刻画或倚靠彩绘梁柱。部分现代艺术廊道对拍摄有规定，建议提前了解。在人多时注意单向通行，尊重其他游客的观览体验。</div>
+                </details>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="footer-col">
+            <h4>无尽长廊</h4>
+            <ul>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">编辑团队</a></li>
+                <li><a href="#">投稿合作</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>内容专题</h4>
+            <ul>
+                <li><a href="#">东方园林</a></li>
+                <li><a href="#">西方古典</a></li>
+                <li><a href="#">当代建筑</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>资源导航</h4>
+            <ul>
+                <li><a href="#">设计术语表</a></li>
+                <li><a href="#">世界遗产名录</a></li>
+                <li><a href="#">摄影图库</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>联系与交流</h4>
+            <ul>
+                <li><a href="#">留言信箱</a></li>
+                <li><a href="#">微信公众号</a></li>
+                <li><a href="#">新浪微博</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2025 无尽长廊 WUJIN CHANGLANG · 在行走中感知空间之美</p>
+    </div>
+</footer>
+
+<script>
+    // 移动端导航切换
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.querySelector('.nav-toggle');
+        const nav = document.getElementById('mainNav');
+        if (toggle && nav) {
+            toggle.addEventListener('click', function() {
+                nav.classList.toggle('open');
+            });
+        }
+    });
+</script>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+</html>
